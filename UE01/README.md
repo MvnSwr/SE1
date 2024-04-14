@@ -1,0 +1,12 @@
+# Frage 1.1
+Durch die Festlegung eines Strings in dem Interface "NumberTransformer" können wir die selbe Fehlernachricht ausgeben lassen, ohne diese zwei mal schreiben zu müssen.
+# Frage 1.2
+Wir können durch eine util-Klasse ein Objekt von RomanNumberTransformer erzeugen. In dieser Utilklasse erstellen wir eine statische Methode 'public static String getRomanNumber(int number)'. Dadurch können wir in Client.java über 'util.getRomanNumber(number)' auf die Methode transformNumber in RomanNumberTransformer.java zugreifen, ohne ein Objekt in Client.java zu erstellen. Da die Zugriffsberechtigung auf die Methoden in RomanNumberTransformer und GermanFormatNumberTransformer nicht angegeben ist, muss die Utilklasse in dem selben Paket wie die RomanNumberTransformer.java und GermanFormatNumberTransformer.java sein.
+# Frage 1.3
+Ich bin mir nicht sicher ob ich die Frage richtig verstanden habe. Aber wir nutzen hier einen objektorientierten Ansatz. Und dadurch das wir eine Extraklasse util angelegt haben, können wir uns in Zukunft das erstellen von einem RomanNumberTransformerobjekt sparen. Wir können einfach die statische Methode in util.java aufrufen. Dadurch sparen wir uns Speicher auf dem Heap. Dort würden sonst die erzeugten Objekte gespeichert werden.
+# Frage 1.4
+Man sollte die Testfälle im in eriner separaten Test-Klasse implementieren, um sicher zu gehen, dass man die Zugriffsberechtigungen auch richtig eingestellt hat.
+# Frage 1.5
+Die Äquivalenzklassen dienen dazu die möglichen Wertebereiche der Inputs für die Testfälle zu definieren. Dabei versucht man die Bereich soweit herunter zu brechen, dass man mit hilfe eines Repräsentanten den gesamten Wertebereich testen kann. Man kann dann mit korrekt gewählen Äquivalenzklassen bei jedem möglichen Repräsentanten das selbe Ergebniss erwarten
+# Frage 1.6
+Die Klasse Client ist nicht gut implementiert. Bei dem Fall eines Wertes außerhalb des definierten Wertebereiches könnte die Ausgabe "Die römische Schreibweise der Zahl 3001 ist: Der Wert liegt ausserhalb des Wertebereiches!! (1-3000)". Man sollte hier besser mit Exceptions arbeiten. Die Klasse Client kann nicht gut getestet werden, da diese keinen Wert zurück gibt. Sie lässt lediglich einen Output in der Konsole
