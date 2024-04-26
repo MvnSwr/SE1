@@ -1,11 +1,11 @@
-package main;
+package repo;
 
 public class CardboxStorageException extends Exception{
-    CardboxStorageException(){
+    public CardboxStorageException(){
         super();
     }
 
-    CardboxStorageException(String msg){
+    public CardboxStorageException(String msg){
         super(msg);
     }
 }

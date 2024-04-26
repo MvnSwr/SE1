@@ -40,9 +40,7 @@ public class CardBox {
 
     //FA3
     public void showContent(){
-        for (PersonCard pc : data){
-            System.out.println(pc.toString());
-        }
+        data.forEach(System.out::println);
     }
 
     //FA4

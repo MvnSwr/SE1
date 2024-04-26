@@ -9,9 +9,10 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
 import main.CardBox;
-import main.CardboxException;
+import repo.CardboxException;
 import main.DeveloperCard;
 import main.EnduserCard;
+import main.PersonCardView;
 
 import java.io.*;
 
@@ -19,20 +20,12 @@ public class CardBoxTest {
     private CardBox cd;
     private DeveloperCard dc1;
     private EnduserCard ec1;
-
-    /*
-     * Testanforderungen:
-     * -Einfügen
-     * -Löschen
-     * -Einfügen des selben Objektes (Exception)
-     * -"Exception" beim löschen
-     * -String-Ausgabe der verschiedenen Obj.
-     * -(size) da redundant
-     */
+    private PersonCardView pcw; //Change to UE02
 
      @BeforeEach
      public void setup(){
         this.cd = new CardBox();
+        this.pcw = new PersonCardView(); //Change to UE02
         this.dc1 = new DeveloperCard("Manuel", "Meyer", true, 0);
         this.ec1 = new EnduserCard("Markus", "Mueller", true, 1);
      }
@@ -40,6 +33,7 @@ public class CardBoxTest {
      @AfterEach
      public void teardown(){
         this.cd = null;
+        this.pcw = null; //Change to UE02
         this.dc1 = null;
         this.ec1 = null;
      }
@@ -104,7 +98,7 @@ public class CardBoxTest {
       try {
           ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
           System.setOut(new PrintStream(outputStream));
-          cd.showContent();
+          pcw.showContent(cd.getCurrentList()); //Change to UE02
           String output = outputStream.toString().trim();
           assertEquals("ID = 0, Vorname = Manuel, Nachname = Meyer, hasEnoughCoffee = true", output);
       } finally {
@@ -122,7 +116,7 @@ public class CardBoxTest {
       try {
           ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
           System.setOut(new PrintStream(outputStream));
-          cd.showContent();
+          pcw.showContent(cd.getCurrentList()); //Change to UE02
           String output = outputStream.toString().trim();
           assertEquals("ID = 1, Vorname = Markus, Nachname = Mueller, isHungry = true", output);
       } finally {

@@ -1,7 +1,9 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.io.*;
+import repo.*;
 
 public class CardBox {
     // datastructure to safe classes that extend the interface "PersonCard"
@@ -39,13 +41,6 @@ public class CardBox {
         return null;
     }
 
-    //FA3
-    public void showContent(){
-        for (PersonCard pc : data){
-            System.out.println(pc.toString());
-        }
-    }
-
     //FA4
     public int size(){
         return data.size();
@@ -78,5 +73,10 @@ public class CardBox {
         }catch(Exception e){
             throw new CardboxStorageException("A problem occured while loading the files");
         }
+    }
+
+    //CR3
+    public List<PersonCard> getCurrentList(){
+        return data;
     }
 }
