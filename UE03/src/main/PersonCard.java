@@ -1,6 +1,6 @@
 package main;
 
-public interface PersonCard {
+public interface PersonCard{
     public String getFirstName();
     public String getLastName();
 

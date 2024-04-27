@@ -5,7 +5,7 @@ import java.util.List;
 import java.io.*;
 import repo.*;
 
-public class CardBox {
+public class CardBox{
     // datastructure to safe classes that extend the interface "PersonCard"
     private ArrayList<PersonCard> data;
 
@@ -49,12 +49,17 @@ public class CardBox {
     //CR2
     public void safe() throws CardboxStorageException{
         try{
-            FileOutputStream fos = new FileOutputStream("CardBoxStorage.tmp");
+            FileOutputStream fos = new FileOutputStream("UE03/src/repo/CardBoxStorage.tmp");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             for(PersonCard pc : data){
                 oos.writeObject(pc);
             }
             oos.close();
+        }catch(FileNotFoundException e){
+            e.printStackTrace();
+        }catch(IOException e){
+            //PersonCard Objekte muessen Serializable sein
+            e.printStackTrace();
         }catch(Exception e){
             throw new CardboxStorageException("A problem occures while saving the files");
         }
@@ -64,12 +69,21 @@ public class CardBox {
         data.clear();
 
         try{
-            FileInputStream fis = new FileInputStream("CardBoxStorage.tmp");
+            FileInputStream fis = new FileInputStream("UE03/src/repo/CardBoxStorage.tmp");
             ObjectInputStream ois = new ObjectInputStream(fis);
-            while(ois.available() > 0){
-                data.add((PersonCard) ois.readObject());
+            while (true) {
+                try {
+                    PersonCard pc = (PersonCard) ois.readObject();
+                    data.add(pc);
+                } catch (EOFException e) {
+                    break; //ois.available() ist nicht zuverlaessig genug. readObject gibt direkt null zurueck
+                }
             }
             ois.close();
+        }catch(FileNotFoundException e){
+            e.printStackTrace();
+        }catch(IOException e){
+            e.printStackTrace();
         }catch(Exception e){
             throw new CardboxStorageException("A problem occured while loading the files");
         }

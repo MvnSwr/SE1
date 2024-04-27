@@ -1,6 +1,8 @@
 package main;
 
-public class EnduserCard implements PersonCard{
+import java.io.Serializable;
+
+public class EnduserCard implements PersonCard, Serializable{
     private String firstName;
     private String lastName;
     private Boolean hungry;

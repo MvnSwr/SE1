@@ -1,6 +1,8 @@
 package main;
 
-public class DeveloperCard implements PersonCard{
+import java.io.Serializable;
+
+public class DeveloperCard implements PersonCard, Serializable{
     private String firstName;
     private String lastName;
     private Boolean coffee;
