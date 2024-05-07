@@ -37,9 +37,9 @@ public abstract class Util {
         }
     }
 
-    public static void load(ArrayList<Datastruct> data) throws DataStorageException{
-        Administration.clear();
-
+    public static ArrayList<Datastruct> load() throws DataStorageException{
+        ArrayList<Datastruct> data = new ArrayList<>();
+        
         try{
             FileInputStream fis = new FileInputStream("UE04/src/repo/UserStoryStorage.tmp");
             ObjectInputStream ois = new ObjectInputStream(fis);
@@ -59,6 +59,7 @@ public abstract class Util {
         }catch(Exception e){
             throw new DataStorageException("A problem occured while loading the files");
         }
+        return data;
     }
 
     public static void show(){
