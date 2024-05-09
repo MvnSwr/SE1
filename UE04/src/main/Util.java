@@ -61,8 +61,4 @@ public abstract class Util {
         }
         return data;
     }
-
-    public static void show(){
-        UserStoryView.show();
-    }
 }

@@ -1,5 +1,6 @@
 package data;
 import java.util.ArrayList;
+import java.util.stream.*;
 
 public class UserStory extends DatastructImpl{
     private String prio;
@@ -23,6 +24,16 @@ public class UserStory extends DatastructImpl{
 
     public void addTask(Task task){
         tasks.add(task);
+    }
+
+    public String toString(){
+        String out = "ID: " + this.getID() + ", Beschreibung: " + this.getDescription() + ", Priorität: " + this.getPrio() + ", Zugeordnete Tasks: ";
+        if(tasks.size() != 0){
+            return out += tasks .stream()
+                                .map(Task::toString)
+                                .collect(Collectors.joining());
+        }
+        return out += "keine";
     }
 
 }

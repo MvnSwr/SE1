@@ -14,11 +14,59 @@ public class Administration {
         taskData = new ArrayList<>();
     }
     
-    public void story(){}
-    public void task(){}
-    public void assign(){}
-    public void stories(){}
-    public void tasks(){}
+    public void story(UserStory us){
+        userData.add(us);
+    }
+
+    public void task(Task t){
+        taskData.add(t);
+    }
+
+    public void assign(int user, int task){
+        Boolean taskBoolean = false;
+        Boolean userBoolean = false;
+        // Safe User and Task after found
+        UserStory tmpUser = null;
+        Task tmpTask = null;
+
+        for(UserStory ud : userData){
+            if(ud.getID() == user){
+                userBoolean = true;
+                tmpUser = ud;
+            }
+            for(Task t : ud.getTasks()){
+                if(t.getID() == user){
+                    taskBoolean = true;
+                    tmpTask = t;
+                }
+            }
+        }
+        for(Task t : taskData){
+            if(t.getID() == user){
+                taskBoolean = true;
+                tmpTask = t;
+            }
+        }
+
+        if(!userBoolean){
+            System.err.println("Es gibt keinen User mit der ID: " + user);
+            return;
+        }
+        if(!taskBoolean){
+            System.err.println("Es gibt keinen Task mit der ID: " + task);
+            return;
+        }
+
+        tmpUser.addTask(tmpTask);
+    }
+
+    public void stories(){
+        userData.forEach(System.out::println);
+    }
+
+    public void tasks(){
+        taskData.forEach(System.out::print);
+    }
     
     public void load(){
         //To delete the existing files for loading the safed files
