@@ -6,16 +6,15 @@ public class UserStory extends DatastructImpl{
     private String prio;
     private ArrayList<Task> tasks;
 
-    public UserStory(){
+    public UserStory(int id, String desc, String prio){
         tasks = new ArrayList<>();
+        this.setID(id);
+        this.setDescription(desc);
+        this.prio = prio;
     }
 
     public String getPrio() {
         return prio;
-    }
-
-    public void setPrio(String prio) {
-        this.prio = prio;
     }
 
     public ArrayList<Task> getTasks() {
