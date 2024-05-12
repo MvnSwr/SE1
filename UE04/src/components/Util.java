@@ -1,4 +1,4 @@
-package main;
+package components;
 
 import repo.DataStorageException;
 import repo.Datastruct;
@@ -19,7 +19,7 @@ public abstract class Util {
         return admin;
     }
 
-    public static void safe(ArrayList<Datastruct> data) throws DataStorageException{
+    static void safe(ArrayList<Datastruct> data) throws DataStorageException{
         try{
             FileOutputStream fos = new FileOutputStream("UE04/src/repo/UserStoryStorage.tmp");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -30,14 +30,13 @@ public abstract class Util {
         }catch(FileNotFoundException e){
             e.printStackTrace();
         }catch(IOException e){
-            //Datastruct Objekte muessen Serializable sein
             e.printStackTrace();
         }catch(Exception e){
             throw new DataStorageException("A problem occures while saving the files");
         }
     }
 
-    public static ArrayList<Datastruct> load() throws DataStorageException{
+    static ArrayList<Datastruct> load() throws DataStorageException{
         ArrayList<Datastruct> data = new ArrayList<>();
         
         try{

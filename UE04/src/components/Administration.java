@@ -1,7 +1,8 @@
-package main;
+package components;
 
 import java.util.ArrayList;
-import data.*;
+import model.*;
+
 import repo.DataStorageException;
 import repo.Datastruct;
 import repo.ExistingException;
@@ -115,7 +116,7 @@ public class Administration {
             e.printStackTrace();
         }
         for(Datastruct ds : data){
-            if(ds.getClass() == UserStory.class){ //TESTEN ob hier ggf. ein Fehler auftritt. Ist die if-Abfrage korrekt?
+            if(ds.getClass() == UserStory.class){
                 userData.add((UserStory)ds);
             }else if(ds.getClass() == Task.class){
                 taskData.add((Task)ds);
@@ -153,8 +154,4 @@ public class Administration {
         }
         return false;
     }
-
-    // In main die Eingabe und schleife für Programm
-    // Hier die Logik für die Implementierung der verschiedenen Befehle
-    // Alles wird über die Util gemacht. Darüber wird auch 'Administration' aufgerufen
 }

@@ -1,12 +1,11 @@
 package main;
 import java.util.*;
 
-import data.Task;
-import data.UserStory;
+import model.*;
+import components.Util;
 import repo.ExistingException;
 
 public class Main {
-    // Logik in der Abfrage der Eingaben und Erstellung der Objekte zur Übergabe an Util->Administration
     public static void main(String[] args){
         Util.createAdministration();
         System.out.print("\033[H\033[2J"); // clear console
@@ -17,15 +16,10 @@ public class Main {
         }
     }
 
+    @SuppressWarnings("resource")
     private static void input(){
         Scanner sc = new Scanner(System.in);
 
-        if (!sc.hasNext()) {
-            System.out.println("Es gab keinen Input!");
-            sc.close();
-            return;
-        }
-    
         try{
             String line = sc.next(); // Erster Parameter
     

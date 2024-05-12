@@ -1,4 +1,4 @@
-package data;
+package model;
 
 import repo.Datastruct;
 import java.io.Serializable;
